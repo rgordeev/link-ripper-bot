@@ -1,0 +1,14 @@
+### ignore all in current dir
+**/*
+
+### exclude from ignore required artifacts
+!gradle/**/*
+!src/**/*
+!.env
+!entrypoint.sh
+!build.gradle
+!gradlew
+!gradlew.bat
+!settings.gradle
+!gradle.properties
+!build/libs/*

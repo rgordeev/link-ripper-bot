@@ -1,0 +1,70 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overridden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+  application:
+    name: telegram-bot
+  profiles:
+    # The commented value for `active` can be replaced with valid Spring profiles to load.
+    # Otherwise, it will be filled in by maven when building the JAR file
+    # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
+    active: ${SPRING_PROFILES_ACTIVE} #spring.profiles.active#
+  messages:
+    basename: i18n/messages
+  main:
+    allow-bean-definition-overriding: true
+  output:
+    ansi:
+      console-available: true
+  servlet:
+    multipart:
+      max-file-size: 10485760
+      max-request-size: 20971520
+      file-size-threshold: 0
+      location: /tmp
+
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
+  undertow:
+    max-http-post-size: 20971520
+
+# Properties to be exposed on the /info management endpoint
+info:
+  # Comma separated list of profiles that will trigger the ribbon to show
+  display-ribbon-on-profiles: 'dev'
+
+# ===================================================================
+# Application specific properties
+# ===================================================================
+
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      rebrandly:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+
+
+application:
+  bot-token: # place your bot token here
+  bot-user-name: # place your bot name here
+  rebrandly-api-url: https://api.rebrandly.com/v1/
+  rebrandly-api-key:
+  rebrandly-workspace:
+  rebrandly-domain:
