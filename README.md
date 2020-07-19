@@ -12,7 +12,7 @@ docker-compose build
 
 ## HOW TO CONFIGURE
 
-Crete `.env` file in the root of the project from `.env-template`.
+Create `.env` file in the root of the project from `.env-template`.
 Define all required `ENV` variables from the `.env` file
 ```
 JAVA_OPTS=-Xmx300m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5050
